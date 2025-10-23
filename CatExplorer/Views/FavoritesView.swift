@@ -42,7 +42,7 @@ struct FavoritesView: View {
             ForEach(favoriteBreeds) { breed in
                 NavigationLink(destination: DetailView(breed: breed)) {
                     HStack(spacing: 15) {
-                        AsyncImage(url: breed.imageURL) { phase in
+                        AsyncImage(url: breed.referenceImageId != nil ? URL(string: "https://cdn2.thecatapi.com/images/\(breed.referenceImageId!).jpg") : nil) { phase in
                             switch phase {
                             case .empty:
                                 ProgressView()

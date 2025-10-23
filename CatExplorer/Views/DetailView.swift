@@ -31,7 +31,7 @@ struct DetailView: View {
                     case .success(let image):
                         image
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
+                            .aspectRatio(contentMode: .fit)
                             .frame(maxWidth: .infinity)
                             .frame(height: 300)
                             .clipped()

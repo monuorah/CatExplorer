@@ -34,8 +34,8 @@ class CatAPIService {
         return breeds
     }
     
-    func fetchBreedImage(breedId: String) async throws -> URL? {
-        let urlString = "\(baseURL)/images/search?breed_ids=\(breedId)"
+    func fetchBreedImageURL(imageId: String) async throws -> String? {
+        let urlString = "\(baseURL)/images/\(imageId)"
         
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
@@ -48,17 +48,13 @@ class CatAPIService {
             throw URLError(.badServerResponse)
         }
         
-        struct ImageResult: Codable {
+        struct ImageDetail: Codable {
             let url: String
         }
         
         let decoder = JSONDecoder()
-        let images = try decoder.decode([ImageResult].self, from: data)
+        let imageDetail = try decoder.decode(ImageDetail.self, from: data)
         
-        guard let firstImage = images.first else {
-            return nil
-        }
-        
-        return URL(string: firstImage.url)
+        return imageDetail.url
     }
 }
