@@ -12,11 +12,17 @@ struct BreedRecord: Identifiable, Codable, Hashable {
     let name: String
     let description: String
     let image: BreedImage?
-}
+    
+    var imageURL: URL? {
+        guard let urlString = image?.url else {return nil}
+        return URL(string: urlString)
+    }
+    
+    var isEligibleForRandom: Bool {
+            return !name.trimmingCharacters(in: .whitespaces).isEmpty &&
+                   !description.trimmingCharacters(in: .whitespaces).isEmpty
+        }
 
-var imageURL: URL? {
-    guard let urlString = image?.url else {return nil}
-    return URL(string: urlString)
 }
 
 struct BreedImage: Codable, Hashable {
