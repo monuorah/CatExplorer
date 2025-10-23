@@ -96,7 +96,7 @@ struct DetailView: View {
                 id: "abys",
                 name: "Abyssinian",
                 description: "The Abyssinian is easy to care for and has a lively personality.",
-                image: BreedImage(url: "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg")
+                referenceImageId: "0XYvRd7oD"
             )
         )
         .environment(FavoritesStore())
