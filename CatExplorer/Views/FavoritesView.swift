@@ -68,9 +68,19 @@ struct FavoritesView: View {
                             }
                         }
                         
-                        Text(breed.name)
-                            .font(.body)
-                            .fontWeight(.medium)
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(breed.name)
+                                .font(.body)
+                                .fontWeight(.medium)
+                                .foregroundColor(.primary)
+                            
+                            Text("Tap to view details")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        Spacer()
                     }
                     .padding(.vertical, 5)
                 }
